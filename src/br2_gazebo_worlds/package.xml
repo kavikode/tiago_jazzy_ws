@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>br2_gazebo_worlds</name>
+  <version>1.0.0</version>
+  <description>Simulation worlds for Book ROS 2.</description>
+  <maintainer email="fmrico@gmail.com">Francisco Martín Rico</maintainer>
+  <license>Apache License 2.0</license>
+  <author email="fmrico@gmail.com">Francisco Martín Rico</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>ament_cmake_auto</build_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

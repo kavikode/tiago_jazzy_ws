@@ -1,0 +1,85 @@
+play_motion2:
+  ros__parameters:
+    motion_planner:
+      disable_motion_planning: true
+      approach_velocity: 0.5
+      approach_min_duration: 0.5
+
+    motions:
+      home:
+        joints:
+          - joint1
+          - joint2
+        positions: [0.5, 0.5]
+        times_from_start: [0.1]
+
+      pose1:
+        joints:
+          - joint1
+          - joint2
+        positions: [1.8, 1.8]
+        times_from_start: [5.0]
+        meta:
+          name: pose1
+          usage: test
+          description: 'pose1'
+
+      controller_2_pose:
+        joints:
+          - joint2
+        positions: [0.1]
+        times_from_start: [5.0]
+
+      # no valid motions
+      no_joints:
+        positions: [0.0, 0.0,
+                    1.0, 2.0,
+                    2.0, 1.0]
+        times_from_start: [0.5, 3.1, 5.8]
+        meta:
+          name: No Joints
+          usage: test
+          description: 'No joints motion'
+
+      no_positions:
+        joints: [joint1, joint2]
+        times_from_start: [0.5, 3.1, 5.8]
+        meta:
+          name: No Positions
+          usage: test
+          description: 'No positions motion'
+
+      no_times_from_start:
+        joints: [joint1, joint2]
+        positions: [0.0, 0.0,
+                    1.0, 2.0,
+                    2.0, 1.0]
+        meta:
+          name: No Times
+          usage: test
+          description: 'No times_from_start motion'
+
+      malformed_motion:
+        joints: [joint1, joint2]
+        positions: [0.0, 0.0,
+                    1.0, 2.0, 1.1,
+                    2.0, 1.0]
+        times_from_start: [0.5, 3.1, 5.8]
+        meta:
+          name: Malformed Motion
+          usage: test
+          description: 'Malformed motion'
+
+motion_loader_test:
+  ros__parameters:
+    motions:
+      sample:
+        joints: [joint1, joint2]
+        positions: [0.0, 0.0,
+                    1.0, 2.0,
+                    2.0, 1.0]
+        times_from_start: [0.5, 3.1, 5.8]
+        meta:
+          name: Sample
+          usage: sample
+          description: 'Sample'

@@ -1,0 +1,4 @@
+navigation:
+  launch: "pal_nav2_bringup nav_bringup.launch.py
+          params_file:=pmb2_nav.yaml
+          robot_name:=@robot_type@"

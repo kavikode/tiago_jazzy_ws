@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot name="top_view_camera_model" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Include the Gazebo plugin configuration -->
+  <xacro:include filename="$(find tiago_description)/urdf/sensors/virtual_cam/top_view_camera_plugin.gazebo"/>
+
+  <!-- Define a reusable macro for the camera -->
+  <xacro:macro name="top_view_camera_mount" params="parent *joint_origin">
+    <joint name="top_view_camera_fixed_joint" type="fixed">
+      <xacro:insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="top_view_camera_link"/>
+    </joint>
+
+    <link name="top_view_camera_link">
+      <visual>
+        <geometry>
+          <mesh filename="$(find tiago_description)/meshes/sensors/virtual_cam/camera.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="$(find tiago_description)/meshes/sensors/virtual_cam/camera.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+</robot>

@@ -1,0 +1,41 @@
+
+<?xml version="1.0"?>
+<!-- Root element for Gazebo-specific settings -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Macro to define Gazebo sensor properties -->
+  <xacro:macro name="camera_gazebo_v1">
+    <!-- Gazebo plugin settings for the camera link -->
+    <gazebo reference="camera_link">
+      <sensor type="camera" name="camera_sensor">
+        <!-- Camera update rate -->
+        <update_rate>30.0</update_rate>
+        <!-- Position and orientation of the camera -->
+        <pose>0 0 0 0 0 0</pose>
+        <!-- Topic name to publish images -->
+        <topic>top_camera/image_raw</topic>
+        <camera name="robot_camera">
+          <!-- Camera field of view -->
+          <horizontal_fov>1.8</horizontal_fov>
+          <!-- Camera image properties -->
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <!-- Near and far clipping planes -->
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <!-- Add Gaussian noise for simulation realism -->
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

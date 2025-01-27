@@ -1,0 +1,4 @@
+robot_state_publisher:
+  launch: "omni_base_description robot_state_publisher.launch.py
+           laser_model:=@laser_model@
+           add_on_module:=@add_on_module@"

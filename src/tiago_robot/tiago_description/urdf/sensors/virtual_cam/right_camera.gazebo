@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <gazebo reference="right_camera_link">
+    <sensor type="camera" name="right_camera_sensor">
+      <always_on>1</always_on>
+      <update_rate>30.0</update_rate>
+      <camera>
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <topic_name>right_camera_sensor</topic_name>
+      <plugin filename="gz-sim-camera-system"
+              name="gz::sim::systems::Camera">
+      </plugin>
+      <plugin filename="libgazebo_ros_camera.so"
+              name="camera_controller">
+        <frame_name>right_camera_optical_frame</frame_name>
+        <min_depth>0.001</min_depth>
+        <max_depth>300.0</max_depth>
+      </plugin>
+    </sensor>
+    <material>Gazebo/Black</material>
+  </gazebo>
+</robot>
